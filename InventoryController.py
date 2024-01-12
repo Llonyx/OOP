@@ -22,6 +22,9 @@ class InventoryController:
             return
         
         existingProduct.qty -= product.qty
+
+        if(existingProduct.qty == 0):
+            self.__inventoryList.remove(existingProduct)
         
 
     def CreateInventoryItemList(self):

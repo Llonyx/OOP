@@ -21,10 +21,8 @@ class BalancedSheet(metaclass=SingletonMeta):
         print("Today's buying report")
         for report in self.buyingReport:
             report.CreateInformation()
-        print()
 
     def CreateSellingReport(self):
         print("Today's selling report")
         for report in self.sellingReport:
             report.CreateInformation()
-        print()

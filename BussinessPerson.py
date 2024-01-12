@@ -9,6 +9,10 @@ class BussinessPerson:
     def name(self):
         pass
 
+    @abstractproperty
+    def productAmount(self):
+        pass
+
     @abstractmethod
     def CreateInformation(self):
         pass
