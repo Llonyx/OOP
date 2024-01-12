@@ -8,3 +8,7 @@ class BussinessPerson:
     @abstractproperty
     def name(self):
         pass
+
+    @abstractmethod
+    def CreateInformation(self):
+        pass
