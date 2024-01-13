@@ -21,28 +21,40 @@ if __name__ == "__main__":
             print()
             if(transactionOption == 1):
                 try:
-                    id = input("Input Supplier ID: ")
-                    name = input("Supplier name: ")
                     productID = input("Product ID: ")
                     productName = input("Product Name: ")
                     productQty = int(input("Product Quantity: "))
 
                     product = warehouseManagementSystem.CreateProductOrder(productID, productName, productQty)
+                    if(not warehouseManagementSystem.IsProductValdiate(product)):
+                       raise ValueError
+                    
+                    id = input("Input Supplier ID: ")
+                    name = input("Supplier name: ")
                     supplier = warehouseManagementSystem.CreateSupplier(id, name, product)
+                    if(not warehouseManagementSystem.IsUserValidate(supplier)):
+                        raise ValueError
+                    
                     warehouseManagementSystem.Consume(supplier)
                     
                 except ValueError:
                     print("Invalid!, Please check your input")              
             elif(transactionOption == 2):
                 try:
-                    id = input("Input Customer ID: ")
-                    name = input("Customer name: ")
                     productID = input("Product ID: ")
                     productName = input("Product Name: ")
                     productQty = int(input("Product Quantity: "))
 
                     product = warehouseManagementSystem.CreateProductOrder(productID, productQty, productName) 
+                    if(not warehouseManagementSystem.IsProductValdiate(product)):
+                       raise ValueError
+                    
+                    id = input("Input Customer ID: ")
+                    name = input("Customer name: ")
                     customer = warehouseManagementSystem.CreateCustomer(id, name, product, warehouseManagementSystem.SellProduct)
+                    if(not warehouseManagementSystem.IsUserValidate(supplier)):
+                        raise ValueError
+                    
                     warehouseManagementSystem.Consume(customer)
 
                 except ValueError:
@@ -56,9 +68,9 @@ if __name__ == "__main__":
             balancedSheetOption = int(input("Please choose the option: "))
             print()
             if(balancedSheetOption == 1):
-                BalancedSheet().CreateBuyingReport()
+                warehouseManagementSystem.CreateBuyingReport()
             elif(balancedSheetOption == 2):
-                BalancedSheet().CreateSellingReport()
+                warehouseManagementSystem.CreateSellingReport()
             else:
                 print("Invalid Option")
         elif(menuOption == 4):
