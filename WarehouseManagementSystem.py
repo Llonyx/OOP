@@ -1,4 +1,8 @@
 from InventoryController import InventoryController
+from Supplier import Supplier
+from Customer import Customer
+from Product import Product
+
 class WarehouseManagementSystem:
     def __init__(self):
         self.inventoryController = InventoryController()
@@ -11,3 +15,19 @@ class WarehouseManagementSystem:
 
     def DisplayProduct(self):
         self.inventoryController.CreateInventoryItemList()
+
+    def CreateProductOrder(self, productID, productQty, productName):
+        product = Product(productID, productQty, productName)
+        return product
+    
+    def CreateSupplier(self, id, name, product):
+        supplier = Supplier(id, name, product, self.AddProduct)
+        return supplier
+    
+    def CreateCustomer(self, id, name, product):
+        customer = Customer(id, name, product, self.SellProduct)
+        return customer
+    
+    def Consume(self, bussinessPerson):
+        bussinessPerson.Consume()
+

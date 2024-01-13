@@ -1,8 +1,4 @@
 from WarehouseManagementSystem import WarehouseManagementSystem
-from BalancedSheet import BalancedSheet
-from Supplier import Supplier
-from Customer import Customer
-from Product import Product
 
 if __name__ == "__main__":
     warehouseManagementSystem = WarehouseManagementSystem()
@@ -30,10 +26,11 @@ if __name__ == "__main__":
                     productID = input("Product ID: ")
                     productName = input("Product Name: ")
                     productQty = int(input("Product Quantity: "))
-                    product = Product(productID, productQty, productName) 
-                    supplier = Supplier(id, name, product, warehouseManagementSystem.AddProduct)
-                    supplier.RestockProduct()
-                    BalancedSheet().AddToBuyingReport(supplier)
+
+                    product = warehouseManagementSystem.CreateProductOrder(productID, productName, productQty)
+                    supplier = warehouseManagementSystem.CreateSupplier(id, name, product)
+                    warehouseManagementSystem.Consume(supplier)
+                    
                 except ValueError:
                     print("Invalid!, Please check your input")              
             elif(transactionOption == 2):
@@ -43,10 +40,11 @@ if __name__ == "__main__":
                     productID = input("Product ID: ")
                     productName = input("Product Name: ")
                     productQty = int(input("Product Quantity: "))
-                    product = Product(productID, productQty, productName) 
-                    customer = Customer(id, name, product, warehouseManagementSystem.SellProduct)
-                    customer.PurchaseProduct()
-                    BalancedSheet().AddToSellingReport(customer)
+
+                    product = warehouseManagementSystem.CreateProductOrder(productID, productQty, productName) 
+                    customer = warehouseManagementSystem.CreateCustomer(id, name, product, warehouseManagementSystem.SellProduct)
+                    warehouseManagementSystem.Consume(customer)
+
                 except ValueError:
                     print("Invalid!, Please check your input")             
             else:

@@ -1,4 +1,5 @@
 from BussinessPerson import BussinessPerson
+from BalancedSheet import BalancedSheet
 
 class Supplier(BussinessPerson):
     userID = None
@@ -13,8 +14,9 @@ class Supplier(BussinessPerson):
 
         self.productAmount = product.qty
 
-    def RestockProduct(self):
+    def Consume(self):
         self.restockProductFunc(self.product)
+        BalancedSheet().AddToBuyingReport(self)
 
     def CreateInformation(self):
         print(f"Supplier ID: {self.userID}")

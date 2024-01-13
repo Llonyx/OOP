@@ -14,5 +14,9 @@ class BussinessPerson:
         pass
 
     @abstractmethod
+    def Consume(self):
+        pass
+
+    @abstractmethod
     def CreateInformation(self):
         pass

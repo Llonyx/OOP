@@ -39,12 +39,6 @@ class InventoryController:
                 idx += 1
             except StopIteration:
                 break
-        # for i in range(len(self.__inventoryList)):
-        #     item = self.__inventoryList[i]
-        #     print(f"{i + 1}. Product ID = {item.id} ")
-        #     print(f"   Product Name = {item.name} ")
-        #     print(f"   Product Quantity = {item.qty} ")
-            
 
     def GetExistingProduct(self, product):
         for item in self.__inventoryList:
