@@ -33,17 +33,17 @@ class WarehouseManagementSystem:
         bussinessPerson.Consume()
 
     def CreateBuyingReport(self):
-        BalancedSheet.CreateBuyingReport()
+        BalancedSheet().CreateBuyingReport()
 
     def CreateSellingReport(self):
-        BalancedSheet.CreateSellingReport()
+        BalancedSheet().CreateSellingReport()
 
     def IsProductValdiate(self, product):
-        if(len(product.id) == 0 or len(product.qty) == 0 or len(product.name) == 0):
+        if(len(product.id) == 0 or len(product.name) == 0):
             return False
         return True
     
     def IsUserValidate(self, bussinessMan):
-        if(len(bussinessMan) == 0 or len(bussinessMan) == 0):
+        if(len(bussinessMan) == 0):
             return False
         return True
